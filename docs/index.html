@@ -77,9 +77,9 @@
           <h2>Data</h2>
           <div class="btn-row">
             <button id="export-btn" class="btn-primary" type="button">Export Data (JSON)</button>
-            <label class="btn-secondary btn-file-label" tabindex="0" role="button">
+            <label class="btn-secondary btn-file-label" for="import-input">
               Import Data
-              <input id="import-input" type="file" accept=".json" class="visually-hidden">
+              <input id="import-input" type="file" accept=".json" class="visually-hidden" aria-label="Import BlockTag data from a JSON file">
             </label>
           </div>
           <p id="data-msg" class="form-msg" role="status"></p>
@@ -94,7 +94,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="js/storage.js"></script>
-  <script src="js/home.js"></script>
   <script src="js/applyDarkMode.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

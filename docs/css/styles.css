@@ -13,6 +13,14 @@
     --card-bg: rgba(245, 239, 220, 0.92);
     --danger: #a83232;
     --danger-hover: #872626;
+    --text-muted: #555555;
+    --text-subtle: #3a3026;
+    --sidebar-fg: #ffffff;
+    --text-on-accent: #ffffff;
+    --btn-secondary-fg: #0a4a6e;
+    --btn-secondary-border: #1e7aad;
+    --chart-axis: #3b2d1e;
+    --chart-grid: rgba(59, 45, 30, 0.12);
 }
 
 :root.dark-mode {
@@ -24,13 +32,37 @@
     --card-bg: rgba(20, 20, 20, 0.92);
     --danger: #a83232;
     --danger-hover: #872626;
+    --text-muted: #c8d0d8;
+    --text-subtle: #e6dac8;
+    --sidebar-fg: #ffffff;
+    --text-on-accent: #ffffff;
+    --btn-secondary-fg: #7ec8eb;
+    --btn-secondary-border: #5ba8d4;
+    --chart-axis: #e6dac8;
+    --chart-grid: rgba(230, 218, 200, 0.18);
 
     .stat-box {
         background: rgb(9, 20, 31);
     }
+
+    .stat-number {
+        color: #8fd86e;
+    }
+
     .action-card {
         background: rgb(34, 43, 51);
     }
+
+    .btn-primary,
+    .search-btn {
+        background-color: var(--nav-green);
+    }
+
+    .btn-primary:hover,
+    .search-btn:hover {
+        background-color: #1a2812;
+    }
+
     body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
         url("../images/17346505-stonebrickscomparison_xl.webp");
@@ -90,7 +122,7 @@ body {
 
 .sidebar {
     background: linear-gradient(180deg, var(--nav-green), var(--nav-green-dark));
-    color: var(--sand);
+    color: var(--sidebar-fg);
     padding: 24px 16px;
     display: flex;
     flex-direction: column;
@@ -111,7 +143,7 @@ body {
 }
 
 .nav-link {
-    color: var(--sand);
+    color: var(--sidebar-fg);
     text-decoration: none;
     padding: 10px 12px;
     border-radius: 6px;
@@ -124,7 +156,7 @@ body {
 }
 
 .nav-link:focus-visible {
-    outline: 2px solid var(--sand);
+    outline: 2px solid var(--sidebar-fg);
     outline-offset: 2px;
 }
 
@@ -175,7 +207,7 @@ body {
 .subtitle {
     margin: 0;
     font-size: 0.9rem;
-    color: #5a4a36;
+    color: var(--text-subtle);
     line-height: 1.5;
 }
 
@@ -208,7 +240,7 @@ body {
 
 .stat-label {
     font-size: 0.75rem;
-    color: #7a7a7a;
+    color: var(--text-muted);
 }
 
 /* ---- Action grid (home) ---- */
@@ -244,7 +276,7 @@ body {
 .action-card p {
     margin: 0;
     font-size: 0.75rem;
-    color: #7a7a7a;
+    color: var(--text-muted);
     line-height: 1.4;
 }
 
@@ -380,14 +412,14 @@ body {
     font: inherit;
     border: none;
     border-radius: 8px;
-    background-color: var(--nav-green);
-    color: var(--sand);
+    background-color: var(--nav-green-dark);
+    color: var(--text-on-accent);
     cursor: pointer;
     transition: background-color 0.15s;
 }
 
 .search-btn:hover {
-    background-color: var(--nav-green-dark);
+    background-color: #2f521f;
 }
 
 .results-heading {
@@ -427,11 +459,11 @@ body {
 }
 
 .results-message--loading {
-    color: #5a4a36;
+    color: var(--text-subtle);
 }
 
 .results-message--muted {
-    color: #5a4a36;
+    color: var(--text-subtle);
 }
 
 /* ---- Player cards (discover) ---- */
@@ -491,7 +523,7 @@ body {
 .player-card__desc {
     margin: 0;
     font-size: 0.75rem;
-    color: #7a7a7a;
+    color: var(--text-muted);
     line-height: 1.4;
     overflow: hidden;
     display: -webkit-box;
@@ -532,7 +564,7 @@ body {
 
 .feed-post__time {
     font-size: 0.7rem;
-    color: #7a7a7a;
+    color: var(--text-muted);
 }
 
 .feed-post__desc {
@@ -555,7 +587,7 @@ body {
 .feed-post__names {
     margin: 6px 0 0;
     font-size: 0.75rem;
-    color: #5a4a36;
+    color: var(--text-subtle);
 }
 
 .feed-post__actions {
@@ -606,7 +638,7 @@ body {
 .group-card__members {
     margin: 0 0 10px;
     font-size: 0.8rem;
-    color: #5a4a36;
+    color: var(--text-subtle);
 }
 
 .group-card__actions {
@@ -622,14 +654,14 @@ body {
     font-size: 0.75rem;
     border: none;
     border-radius: 6px;
-    background-color: var(--nav-green);
-    color: var(--sand);
+    background-color: var(--nav-green-dark);
+    color: var(--text-on-accent);
     cursor: pointer;
     transition: background-color 0.15s;
 }
 
 .btn-primary:hover {
-    background-color: var(--nav-green-dark);
+    background-color: #2f521f;
 }
 
 .btn-primary:focus-visible {
@@ -641,10 +673,10 @@ body {
     font-family: "Minecraft", Arial, sans-serif;
     padding: 8px 14px;
     font-size: 0.75rem;
-    border: 2px solid var(--sky);
+    border: 2px solid var(--btn-secondary-border);
     border-radius: 6px;
     background: transparent;
-    color: #1a6a9e;
+    color: var(--btn-secondary-fg);
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;

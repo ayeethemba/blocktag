@@ -23,9 +23,9 @@
     const counts = TAGS.map(function (tag) {
       return posts.filter(function (p) { return p.tags && p.tags.includes(tag); }).length;
     });
-    const isDark = Store.getSettings()['dark-mode'];
-    const textColor = isDark ? '#caa884' : '#3b2d1e';
-    const gridColor = isDark ? 'rgba(202,168,132,0.15)' : 'rgba(59,45,30,0.1)';
+    const rootStyle = getComputedStyle(document.documentElement);
+    const textColor = rootStyle.getPropertyValue('--chart-axis').trim() || '#3b2d1e';
+    const gridColor = rootStyle.getPropertyValue('--chart-grid').trim() || 'rgba(59,45,30,0.12)';
     new Chart(document.getElementById('tags-chart'), {
       type: 'bar',
       data: {
