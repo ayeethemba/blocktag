@@ -66,6 +66,13 @@
           </div>
         </section>
 
+        <section aria-label="Posts by tag">
+          <h2>Posts by Tag</h2>
+          <div class="chart-container">
+            <canvas id="tags-chart" aria-label="Bar chart showing number of posts per gameplay tag" role="img"></canvas>
+          </div>
+        </section>
+
         <section aria-label="Data management">
           <h2>Data</h2>
           <div class="btn-row">
@@ -85,6 +92,7 @@
     <p>&copy; 2026 BlockTag &mdash; Duke Dawgs. Built for CS 343.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="js/storage.js"></script>
   <script src="js/home.js"></script>
   <script src="js/applyDarkMode.js"></script>
