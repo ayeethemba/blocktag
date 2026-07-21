@@ -1,89 +1,80 @@
-# Project Title: BlockTag
+# BlockTag — Social Platform for Minecraft Players
 
-**Duke Dawgs**
+**[▶ Try it in your browser](https://ayeethemba.github.io/blocktag/)**
 
-**Student Names:** Themba Chika, Logan Kasmier, Layla Aure, Christopher Sledd
+A client-side social platform where Minecraft players build profiles, post to a
+tag-ranked feed, and find each other by playstyle. Built with vanilla JavaScript
+for CS 343 (Web Development) at James Madison University, Spring 2026.
 
----
+<!-- TODO: 1-2 screenshots (discover page + tag-filtered feed), e.g. docs/images/screenshot-feed.png -->
 
-## Purpose
+## About
 
-BlockTag is meant to provide a service for following Minecraft players by searching for names, skins, or UUID. By following Minecraft players, the user can access their customizable profile containing a description, links to social platforms, and preset tags for different gameplay styles. Users can search by tags to find players and posts that exhibit the user's preferences, making it simple to find similar players in the Minecraft community. The presence of posts also makes BlockTag a small social platform, where players can meet and invite others to multiplayer servers. The service essentially acts as a home for many Minecraft players, yet provides the foundation for smaller communities with the groups feature. With BlockTag's unique tags system, it is never difficult for users to find others with similar interests in the game of Minecraft.
+Search for any real Minecraft player by username, UUID (dashed or undashed), or any
+URL containing a UUID (like a Crafatar avatar link). BlockTag resolves the player
+through the Mojang API and renders their live skin. Build your own profile with
+playstyle tags (builder, casual, PvP, modded), post to recruit players for
+multiplayer sessions, and create groups whose member posts get feed priority.
 
-## Users
-
-BlockTag values inclusivity and accessibility ("a11y"). It is designed primarily for people who love Minecraft.
-
-### Background
-
-The intended audience for BlockTag includes users who can read/listen to natural language. Those without visual impairments will be able to see player profiles and posts. Those with visual impairments will be able to hear descriptions of the profiles and posts.
-
-BlockTag is intended to be used by people who have and have not played Minecraft. People who have played Minecraft can search for their favorite players, make posts, and find people who have similar interests in Minecraft. People who have not played Minecraft can search for a username that they want to use to see if it is taken (Minecraft players must have a unique username), check the feed to see what players do in Minecraft, and look for/join groups that share their interests.
-
-### Needs
-
-The intended users of BlockTag include those with needs such as:
-
-- To find out if a username is available
-- To keep track of their favorite Minecraft player's skin and username
-- To share posts with other Minecraft players
-- To find players with similar interests
+The feed is ordered by a mix of tag relevance and recency, so you see posts from
+players who play the way you do.
 
 ## Features
 
-Users of BlockTag will be able to:
+- **Player search** via the Mojang API: username, UUID, or UUID-bearing URLs, with live skin rendering
+- **Profiles** with descriptions, playstyle tags, and Discord/YouTube links
+- **Posts** with tags and an "interested players" sign-up list for organizing multiplayer sessions
+- **Groups** that act as friend lists and boost member posts in the feed
+- **Tag-ranked feed** sorted by preference match and recency
+- **Dark mode** and print-friendly layouts
+- **Accessibility first**: screen-reader-compatible profiles and post descriptions throughout
 
-- **Search for Minecraft players** by Mojang API means such as:
-  - name
-  - skins
-  - UUID
-  - tags (not an API feature; read below)
-- **Follow Minecraft players** to receive updates when they post
-- **Customize their own profile** with:
-  - a colorful description
-  - tags that show other users your interests in the game, including builder, casual, PvP, modded, etc.
-  - social platform links including Discord and Youtube
-- **Create posts** for other users to interact with via feed tab containing:
-  - a short description about the gameplay session
-  - relevant tags
-  - a sign-up field for users to show interest in the multiplayer game
-  - a small list of user names that have shown interest
-  - *Feed posts allow users to more easily find similar players, so they are also shown in order of both preferred tags and recency.*
-- **Create and join groups** of players, which is effectively a friend list with the following bonuses:
-  - member posts gain priority in the feed
-  - other members are recommended regardless of tags
+## Architecture
 
-## Data
+No backend: the app is fully client-side, deployed on GitHub Pages from `docs/`.
 
-Users interact with four core data types through CRUD operations.
+- **Persistence** runs through a single `Store` module (`docs/js/storage.js`) wrapping
+  localStorage, so every page does CRUD against one API: following, profile, posts,
+  groups, and settings
+- **Mojang integration** (`docs/js/discover.js`) routes requests through CORS proxies
+  with fallback, since Mojang's API sends no CORS headers, and normalizes the three
+  supported input formats down to a UUID before fetching
+- **Four data models** (from the [design doc](documents/DESIGN.md)): PlayerProfile
+  (read-only, API-sourced), MyProfile, Post, and Group
 
-A **PlayerProfile** is read-only data fetched from the Mojang API when a user searches for a Minecraft player. Users cannot modify these records directly. A **MyProfile** is created when a user signs up, read by anyone who visits their page, and updated when the user edits their description, tags, or social links. **Posts** are created by users to recruit for gameplay sessions, read on the feed sorted by tag relevance and recency, and deleted by the post author. Other users can update a post's interested players list. **Groups** are created by any user through the groups tab and updated as members join; by the same token, left members will be deleted.
+## My Contributions (Co-Lead Developer)
 
-### Data Models
+Co-led development with Layla Aure; the two of us drove the bulk of the build, with the
+rest of the team contributing more heavily toward the final stretch.
 
-**PlayerProfile**
+- Built core pages and the localStorage persistence layer (`Store` module) powering CRUD for the full MVP
+- Implemented the Mojang API integration, including live player-skin loading through CORS proxy fallback
+- Set up GitHub Pages deployment and the `docs/` build structure
+- Ran accessibility passes: screen-reader compatibility and a11y checks across pages
+- Contributed to the project design documents (data models, annotated design sketch)
 
-1. `PlayerName`: string
-2. `Skin`: object
-   - `Name`: string
-   - `Src`: string
-3. `UUID`: string
-4. `Tags`: string[]
+## Tech Stack
 
-**MyProfile**
+Vanilla JavaScript · HTML5/CSS3 · localStorage · Mojang REST API · GitHub Pages
 
-1. `Description`: string
-2. `Links`: string[]
-3. `Tags`: string[]
-4. `Following`: PlayerProfile[]
+## How to Run
 
-**Post**
+Use the [live site](https://ayeethemba.github.io/blocktag/), or locally:
 
-1. `PostDescription`: string
-2. `PostTags`: string[]
-3. `InterestedPlayers`: string[]
+```bash
+git clone https://github.com/ayeethemba/blocktag.git
+```
 
-**Group**
+Open `docs/index.html` in your browser. No dependencies, no build step.
 
-1. `MemberPosts`: Post[]
-2. `Members`: Player[]
+## Team — Duke Dawgs
+
+- **Themba Chika** — co-lead developer: core pages, persistence layer, Mojang integration, deployment, a11y
+- **Layla Aure** — co-lead developer <!-- TODO: her focus areas -->
+- **Logan Kasmier** — <!-- TODO: role -->
+- **Christopher Sledd** — <!-- TODO: role -->
+
+## Docs
+
+- [Original design document](documents/DESIGN.md): purpose, users, data models
+- [Annotated design sketch](documents/BlockTag_Design_Sketch.pdf)
