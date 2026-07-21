@@ -72,10 +72,10 @@ Open `docs/index.html` in your browser. No dependencies, no build step.
 
 ## Team — Duke Dawgs
 
-- **Themba Chika** — co-lead developer: core pages, persistence layer, Mojang integration, deployment, a11y
-- **Layla Aure** — co-lead developer <!-- TODO: her focus areas -->
-- **Logan Kasmier** — <!-- TODO: role -->
-- **Christopher Sledd** — <!-- TODO: role -->
+- **Themba Chika** — co-lead developer: core pages, persistence layer, deployment, a11y
+- **Layla Aure** — co-lead developer: Mojang integration, scrum master
+- **Logan Kasmier** — acccesibility
+- **Christopher Sledd** — presentation
 
 ## Docs
 
