@@ -8,6 +8,9 @@ for CS 343 (Web Development) at James Madison University, Spring 2026.
 
 <!-- TODO: 1-2 screenshots (discover page + tag-filtered feed), e.g. docs/images/screenshot-feed.png -->
 
+![Dashboard](assets/github1.png)
+![Profile](assets/github2.png)
+
 ## About
 
 Search for any real Minecraft player by username, UUID (dashed or undashed), or any
